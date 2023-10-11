@@ -1,0 +1,5 @@
+---
+- name: Install Kong Gateway
+  hosts: your_target_server
+  roles:
+    - kong_gateway
