@@ -1,0 +1,16 @@
+---
+- name: Clone Kong Gateway from Source
+  git:
+    repo: https://github.com/Kong/kong.git
+    dest: /opt/kong-source
+
+- name: Build Kong Gateway
+  command: make install
+  args:
+    chdir: /opt/kong-source
+
+- name: Set up Auto Startup
+  systemd:
+    name: kong
+    enabled: yes
+    state: started
